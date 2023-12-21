@@ -2,21 +2,30 @@ let amigos = [];
 
 function adicionar(){
     //recuperar o nome digitado
-    let amigo = document.getElementById('nome-amigo').value;
+    let amigo = document.getElementById('nome-amigo');
     let lista = document.getElementById('lista-amigos');
-    amigos.push(amigo)
+    amigos.push(amigo.value)
     //adicionar o nome digitado na lista de amigos
     if (lista.textContent == ''){
-        lista.textContent = amigo;
+        lista.textContent = amigo.value;
     }else{
-        lista.textContent = lista.textContent + ', ' + amigo;
+        lista.textContent = lista.textContent + ', ' + amigo.value;
     }
 
-    amigo = '';
+    amigo.value = '';
 }
 
 function sortear(){
     embaralha(amigos);
+    let listaSorteio = document.getElementById('lista-sorteio');
+
+    for (let i = 0; i < amigos.length; i++){
+        if(i == amigos.length - 1){
+            listaSorteio.innerHTML = listaSorteio.innerHTML + amigos[i] + '-->' + amigos[0] + '<br>';
+        }else{
+            listaSorteio.innerHTML = listaSorteio.innerHTML + amigos[i] + '-->' + amigos[i +1] + '<br>';
+        }
+    }
 }
 
 
@@ -35,4 +44,6 @@ function embaralha(lista) {
 function reiniciar(){
     document.getElementById('nome-amigo').value = '';
     document.getElementById('lista-amigos').textContent = '';
+    document.getElementById('lista-sorteio').textContent = '';  
+    amigos = [];  
 }
