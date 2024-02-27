@@ -35,8 +35,8 @@ function adicionar() {
 
 
 function sortear() {
-    if (amigos.length < 4 ){
-        alert('Adicione no mínimo 4 amigos');
+    if (amigos.length < 5  ){
+        alert('Adicione no mínimo 5 amigos');
         return;
     }
     embaralhar(amigos);
